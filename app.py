@@ -21,26 +21,9 @@ def configure_app(app):  # конфигурируем приложение
     api.add_namespace(movie_ns)
     api.add_namespace(genre_ns)
     api.add_namespace(director_ns)
-    # create_data(app, db)
-
-
-#
-#
-# функция
-# def create_data(app, db):
-#     with app.app_context():
-#         db.create_all()
-#
-#         создать несколько сущностей чтобы добавить их в БД
-#
-#         with db.session.begin():
-#             db.session.add_all(здесь список созданных объектов)
-#
-#
 
 
 if __name__ == '__main__':
     app_config = Config()  # загружаем конфигурацию
     app = create_app(app_config)  # создаем приложение
-    configure_app(app)  # конфигурируем приложение
-    app.run(host="localhost")  # запускаем приложение
+    app.run(debug=True)  # запускаем приложение

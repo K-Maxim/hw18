@@ -1,3 +1,6 @@
+from flask import request
+
+from dao.model.movies import Movie
 from dao.movies import MovieDAO
 
 
@@ -9,7 +12,19 @@ class MovieService:
         return self.dao.get_one(mid)
 
     def get_all(self):
-        return self.dao.get_all()
+        director_id = request.args.get('director_id', type=int)
+        genre_id = request.args.get('genre_id', type=int)
+        year = request.args.get('year', type=int)
+        movies = self.dao.get_all()  # импортировал все фильмы
+
+        if director_id:
+            movies = movies.filter(Movie.director_id == director_id)
+        if genre_id:
+            movies = movies.filter(Movie.genre_id == genre_id)
+        if year:
+            movies = movies.filter(Movie.year == year)
+
+        return movies  # вывожу фильмы в зависимости от результатов фильтра
 
     def create(self, data):
         return self.dao.create(data)
