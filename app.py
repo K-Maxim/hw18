@@ -27,3 +27,4 @@ if __name__ == '__main__':
     app_config = Config()  # загружаем конфигурацию
     app = create_app(app_config)  # создаем приложение
     app.run(debug=True)  # запускаем приложение
+
