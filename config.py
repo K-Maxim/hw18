@@ -3,3 +3,4 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JSON_AS_ASCII = False
 
+
